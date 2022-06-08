@@ -48,17 +48,13 @@ result = length/numberOfSentences
 # make a dictionary whose keys are types and whose values are token counts of that type.
 # {'letters' : '2'}
 
-wordCountDictionary = dict()
+
 
 # create a list containing every token in the document in sequence
 def generateDictionary(filename):
+    wordCountDictionary = dict()
     file2 = open(filename)
     lineList = file2.readline()
-
-
-
-
-
     for line in lineList:
         line = line.strip()
         if line == "":
@@ -73,7 +69,6 @@ def generateDictionary(filename):
                 wordCountDictionary[word] = currentCount
             else: # if we have never seen this type, create a key and give it a value of 1.
                 wordCountDictionary[word] = 1
-
     return wordCountDictionary
 
 # OR: count word/sentence lengths
@@ -82,6 +77,14 @@ def generateDictionary(filename):
 # perform a chi-squared test
 # Take the corpora associated with two authors.
 # Merge them into a single, larger corpus.
+def mergeDictionaries (dictionaryOne, dictionaryTwo):
+    for word in dictionaryOne.keys():
+        if word in dictionaryTwo.keys(): # if the type has been seen
+            dictionaryTwo[word] += 1
+        else: # if we have never seen this type, create a key and give it a value of 1.
+            dictionaryTwo[word] = 1
+    return dictionaryTwo
+
 # Count the tokens for each of the words that can be found in this larger corpus.
 # Select the n most common words in the larger corpus.
 
