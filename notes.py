@@ -41,7 +41,40 @@ result = length/numberOfSentences
 
 
 # make a dictionary of type/token counts
+# lemma = word (conceptually speaking)
+# type = sequence of letters that stands in for a lemma, because we're too lazy to lemmatize.
+# tokens = an actual sequence of letters 'in situ' in your text. Different from a type/lemma because it doesn't repeat.
 
+# make a dictionary whose keys are types and whose values are token counts of that type.
+# {'letters' : '2'}
+
+wordCountDictionary = dict()
+
+# create a list containing every token in the document in sequence
+def generateDictionary(filename):
+    file2 = open(filename)
+    lineList = file2.readline()
+
+
+
+
+
+    for line in lineList:
+        line = line.strip()
+        if line == "":
+            pass
+        # we have a list of words that comprise the current chunk of text 
+        for word in line.split():
+            if word in wordCountDictionary.keys(): # if the type has been seen
+                #wordCountDictionary[word] = wordCountDictionary[word] + 1
+                #wordCountDictionary[word] += 1
+                currentCount = wordCountDictionary[word]
+                currentCount += 1
+                wordCountDictionary[word] = currentCount
+            else: # if we have never seen this type, create a key and give it a value of 1.
+                wordCountDictionary[word] = 1
+
+    return wordCountDictionary
 
 # OR: count word/sentence lengths
 
