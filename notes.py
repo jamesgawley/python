@@ -78,25 +78,39 @@ def generateDictionary(filename):
 # Take the corpora associated with two authors.
 # Merge them into a single, larger corpus.
 def mergeDictionaries (dictionaryOne, dictionaryTwo):
+    mergedDictionary = dict()
     for word in dictionaryOne.keys():
         if word in dictionaryTwo.keys(): # if the type has been seen
-            print("The current word is '", word, "' and it has been seen", dictionaryOne[word], "times in dictionary one,", dictionaryTwo[word], "times in dictionary Two.")
-            dictionaryTwo[word] += 1
-            print("The merged value for the new dictionary is ", dictionaryTwo[word])
-            x = input()
+            #print("The current word is '", word, "' and it has been seen", dictionaryOne[word], "times in dictionary one,", dictionaryTwo[word], "times in dictionary Two.")
+            #dictionaryTwo[word] += 1
+            mergedDictionary[word] = dictionaryTwo[word] + dictionaryOne[word]
+#            print("The merged value for the new dictionary is ", dictionaryTwo[word])
+#            x = input()
         else: # if we have never seen this type, create a key and give it a value of 1.
-            dictionaryTwo[word] = 1
+            mergedDictionary[word] = 1
     return dictionaryTwo
 
 m = mergeDictionaries(d1, d2)
+
+
+#sort the dictionary by turning it into a tuple.
+
+
 
 # Count the tokens for each of the words that can be found in this larger corpus.
 # Select the n most common words in the larger corpus.
 
 
+
+
+
 '''
-Calculate how many tokens of these n most common words we would have expected to find in each of the two original corpora if they had come from the same author. This simply means dividing the number of tokens that we have observed in the combined corpus into two values, based on the relative sizes of the two authors’ contributions to the comon corpus.
+Calculate how many tokens of these n most common words we would have expected to find in each of the two original corpora if they had come from the same author. This simply means dividing the number of tokens that we have observed in the combined corpus into two values, based on the relative sizes of the two authors’ contributions to the common corpus.
 '''
+
+# the relative proportion of the 
+
+
 
 
 '''
